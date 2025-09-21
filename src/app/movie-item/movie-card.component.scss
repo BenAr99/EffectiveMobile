@@ -1,0 +1,32 @@
+@use '../styles/media-query' as media;
+
+:host {
+  display: flex;
+  background: #fafcff;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border: solid 2px #dfdada;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+:host:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.movie-card__name {
+  text-align: center;
+  font-weight: 500;
+}
+
+.movie-card__image {
+  width: 100%;
+  border-radius: 4px;
+  height: 100%;
+  margin-bottom: 5px;
+  object-fit: cover;
+}

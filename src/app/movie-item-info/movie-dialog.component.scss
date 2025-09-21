@@ -1,0 +1,139 @@
+@use '../styles/media-query' as media;
+
+:host {
+  display: flex;
+  padding: 15px;
+  background: #f1f1f1;
+}
+
+.dialog__content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding-bottom: 35px;
+}
+
+.dialog__close-button {
+  display: flex;
+  align-content: center;
+  padding: 4px;
+  border: solid 1px #fba8a8;
+  border-radius: 8px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #fba8a8;
+  z-index: 1;
+}
+
+.dialog__close-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.dialog__close-icon {
+  height: 100%;
+  font-size: 20px;
+}
+
+.dialog__title {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.dialog__year {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.dialog__tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.dialog__tag {
+  text-align: center;
+  margin: 2px;
+  padding: 3px;
+  border-radius: 8px;
+  background: #b0d3fb;
+}
+
+.dialog__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow-y: auto;
+}
+
+.dialog__image {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.dialog__rating {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+  width: 40px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+@include media.tablet {
+  :host {
+    padding: 10px;
+    width: 400px;
+  }
+
+  .dialog__title {
+    font-size: 32px;
+  }
+
+  .dialog__content {
+    font-size: 14px;
+  }
+
+  .dialog__image {
+    width: 150px;
+    height: 200px;
+  }
+}
+
+@include media.mobile {
+  :host {
+    flex-direction: column;
+    padding: 15px;
+    width: 250px;
+  }
+
+  .dialog__close-button {
+    padding: 2px;
+    right: 12px;
+  }
+
+  .dialog__year {
+    margin-bottom: 0;
+  }
+
+  .dialog__title {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .dialog__image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dialog__image {
+    width: 200px;
+    height: 250px;
+  }
+}
