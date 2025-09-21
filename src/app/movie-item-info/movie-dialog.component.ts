@@ -16,11 +16,13 @@ import {MatIconModule} from '@angular/material/icon';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Movie,
-              private dialogRef: MatDialogRef<MovieDialogComponent>) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Movie,
+    private dialogRef: MatDialogRef<MovieDialogComponent>
+  ) {
   }
 
-  close () {
+  close() {
     this.dialogRef.close();
   }
 }

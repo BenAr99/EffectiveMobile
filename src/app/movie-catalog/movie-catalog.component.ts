@@ -25,21 +25,16 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
 export class MovieCatalogComponent implements OnInit {
   movies: Observable<Movie[]> = of([])
   search = new FormControl<string>('', [Validators.required])
-  // loading: boolean = false
 
   constructor(private dataMovieService: DataMovieService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.movies = this.search.valueChanges.pipe(
-      // tap(()=> {
-      //   this.loading = true;
-      // }),
       debounceTime(200),
       startWith(''),
       filter(value => value !== null),
       switchMap(search => {
-          // this.loading = false;
           return this.dataMovieService.getAllMovies(search)
       }))
   }

@@ -1,5 +1,5 @@
 import {HttpInterceptorFn, HttpResponse} from '@angular/common/http';
-import {map, throwError} from 'rxjs';
+import {map} from 'rxjs';
 
 interface CanError {
   isError?: boolean;
@@ -18,7 +18,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     })
   )
 };
-// commit напомнить
+
 function isMovie(value: unknown | Record<string, unknown>): value is CanError {
   return typeof value === "object" && value !== null && 'isError' in value
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {catchError, map, Observable} from 'rxjs';
+import {catchError, EMPTY, map, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {NotifyService} from './notify.service';
 
@@ -32,7 +32,7 @@ export class DataMovieService {
       catchError(() => {
           this.notifyService.error.next('Не удалось загрузить данные о фильмах')
 
-          return []
+          return EMPTY
         }
       )
     )
@@ -43,7 +43,7 @@ export class DataMovieService {
       catchError(() => {
           this.notifyService.error.next('Не удалось загрузить данные фильма')
 
-          return []
+          return EMPTY
         }
       )
     )

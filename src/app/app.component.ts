@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {NotifyService} from './services/notify.service';
-import {MatDialog} from '@angular/material/dialog';
-import {NotifyComponent} from './notify/notify.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -12,19 +11,17 @@ import {NotifyComponent} from './notify/notify.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'EffectiveMobile';
-
   constructor(
     private notifyService: NotifyService,
-    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
   ) {
     this.notifyService.error.subscribe((error)=> {
-      this.dialog.open(NotifyComponent, {
-        data: error
+      this.snackBar.open(error, 'Закрыть', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 5000,
+        panelClass: 'snackbar__error'
       })
     })
   }
 }
-
-// spinner
-// отобразить ошибку компонент
