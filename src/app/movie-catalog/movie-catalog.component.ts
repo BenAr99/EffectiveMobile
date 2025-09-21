@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DataMovieService, Movie} from '../services/data-movie.service';
-import {debounceTime, filter, map, Observable, of, startWith, switchMap, tap} from 'rxjs';
+import {debounceTime, filter, Observable, of, startWith, switchMap} from 'rxjs';
 import {MovieCardComponent} from '../movie-item/movie-card.component';
 import {AsyncPipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MovieDialogComponent} from '../movie-item-info/movie-dialog.component';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-movie-catalog',
@@ -15,7 +14,6 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
     MovieCardComponent,
     AsyncPipe,
     ReactiveFormsModule,
-    MatProgressSpinner,
   ],
   templateUrl: './movie-catalog.component.html',
   styleUrl: './movie-catalog.component.scss',
@@ -35,7 +33,7 @@ export class MovieCatalogComponent implements OnInit {
       startWith(''),
       filter(value => value !== null),
       switchMap(search => {
-          return this.dataMovieService.getAllMovies(search)
+        return this.dataMovieService.getAllMovies(search)
       }))
   }
 
