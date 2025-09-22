@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, OnInit} from '@angular/core';
 import {DataMovieService, Movie} from '../services/data-movie.service';
 import {debounceTime, filter, Observable, of, startWith, switchMap} from 'rxjs';
 import {MovieCardComponent} from '../movie-item/movie-card.component';
@@ -6,6 +6,7 @@ import {AsyncPipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MovieDialogComponent} from '../movie-item-info/movie-dialog.component';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-movie-catalog',
@@ -24,7 +25,7 @@ export class MovieCatalogComponent implements OnInit {
   movies: Observable<Movie[]> = of([])
   search = new FormControl<string>('', [Validators.required])
 
-  constructor(private dataMovieService: DataMovieService, private dialog: MatDialog) {
+  constructor(private dataMovieService: DataMovieService, private dialog: MatDialog, private destroy: DestroyRef) {
   }
 
   ngOnInit() {
@@ -38,7 +39,9 @@ export class MovieCatalogComponent implements OnInit {
   }
 
   openDialogMovieInfo(id: string) {
-    this.dataMovieService.getMovie(id).subscribe(value => {
+    this.dataMovieService.getMovie(id).pipe(
+      takeUntilDestroyed(this.destroy),
+    ).subscribe(value => {
       this.dialog.open(MovieDialogComponent, {
         panelClass: 'movie-dialog',
         data: value,

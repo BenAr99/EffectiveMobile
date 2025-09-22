@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, DestroyRef} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {NotifyService} from './services/notify.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,11 @@ export class AppComponent {
   constructor(
     private notifyService: NotifyService,
     private snackBar: MatSnackBar,
+    private destroy: DestroyRef
   ) {
-    this.notifyService.error.subscribe((error)=> {
+    this.notifyService.error.pipe(
+      takeUntilDestroyed(this.destroy),
+    ).subscribe((error)=> {
       this.snackBar.open(error, 'Закрыть', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
