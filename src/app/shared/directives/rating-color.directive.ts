@@ -8,7 +8,7 @@ export class RatingColorDirective implements OnChanges {
   @Input() appRatingColor?: number;
   @HostBinding('style.background') backgroundColor?: string;
 
-  ngOnChanges() {
+  ngOnChanges():void {
     if (this.appRatingColor) {
       if (this.appRatingColor >=  8 ) {
         this.backgroundColor = 'gold'
