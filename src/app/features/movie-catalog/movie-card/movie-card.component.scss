@@ -1,4 +1,4 @@
-@use '../styles/media-query' as media;
+@use '../../../shared/styles/media-query' as media;
 
 :host {
   display: flex;
@@ -19,14 +19,16 @@
 }
 
 .movie-card__name {
+  font-size: 16px;
   text-align: center;
   font-weight: 500;
 }
 
+
 .movie-card__image {
+  aspect-ratio: 2 / 3;
   width: 100%;
   border-radius: 4px;
   height: 100%;
   margin-bottom: 5px;
-  object-fit: cover;
 }

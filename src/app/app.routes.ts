@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {MovieCatalogComponent} from './movie-catalog/movie-catalog.component';
+import {MovieCatalogComponent} from './features/movie-catalog/movie-catalog.component';
 
 export const routes: Routes = [
   {

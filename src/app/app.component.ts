@@ -1,6 +1,6 @@
 import {Component, DestroyRef} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {NotifyService} from './services/notify.service';
+import {NotifyService} from './core/services/notify.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
@@ -9,7 +9,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   constructor(

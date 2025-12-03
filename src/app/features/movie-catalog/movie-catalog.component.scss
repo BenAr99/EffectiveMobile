@@ -1,11 +1,11 @@
-@use '../styles/media-query' as media;
+@use '../../shared/styles/media-query' as media;
 
 :host {
   display: flex;
   flex-direction: column;
 }
 
-.catalog-header {
+.catalog__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +34,7 @@
   border: solid 2px #c5c1c1;
 }
 
-.catalog__movies-container {
+.catalog__movies {
   display: grid;
   padding: 10px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
@@ -51,7 +51,7 @@
     width: 180px;
     padding: 6px;
   }
-  .catalog__movies-container {
+  .catalog__movies {
     grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
   }
 }
@@ -61,7 +61,7 @@
     font-size: 20px;
   }
 
-  .catalog-header {
+  .catalog__header {
     flex-direction: column;
   }
 
@@ -70,7 +70,7 @@
     width: 150px;
   }
 
-  .catalog__movies-container {
+  .catalog__movies {
     grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
   }
 }

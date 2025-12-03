@@ -1,15 +1,17 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {Movie} from '../services/data-movie.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {RatingColorDirective} from '../directives/rating-color.directive';
+import {RatingColorDirective} from '../../../shared/directives/rating-color.directive';
 import {MatIconModule} from '@angular/material/icon';
+import {Movie} from '../movie-catalog.contracts';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-movie-dialog',
   standalone: true,
   imports: [
     MatIconModule,
-    RatingColorDirective
+    RatingColorDirective,
+    NgOptimizedImage
   ],
   templateUrl: './movie-dialog.component.html',
   styleUrl: './movie-dialog.component.scss',
@@ -22,7 +24,7 @@ export class MovieDialogComponent {
   ) {
   }
 
-  close() {
+  close(): void {
     this.dialogRef.close();
   }
 }

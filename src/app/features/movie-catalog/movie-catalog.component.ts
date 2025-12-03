@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component, DestroyRef, OnInit} from '@angular/core';
-import {DataMovieService, Movie} from '../services/data-movie.service';
+import {MovieCatalogService} from './movie-catalog.service';
 import {debounceTime, filter, Observable, of, startWith, switchMap} from 'rxjs';
-import {MovieCardComponent} from '../movie-item/movie-card.component';
+import {MovieCardComponent} from './movie-card/movie-card.component';
 import {AsyncPipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {MovieDialogComponent} from '../movie-item-info/movie-dialog.component';
+import {MovieDialogComponent} from './movie-dialog/movie-dialog.component';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {Movie} from './movie-catalog.contracts';
 
 @Component({
   selector: 'app-movie-catalog',
@@ -25,10 +26,10 @@ export class MovieCatalogComponent implements OnInit {
   movies: Observable<Movie[]> = of([])
   search = new FormControl<string>('', [Validators.required])
 
-  constructor(private dataMovieService: DataMovieService, private dialog: MatDialog, private destroy: DestroyRef) {
+  constructor(private dataMovieService: MovieCatalogService, private dialog: MatDialog, private destroy: DestroyRef) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.movies = this.search.valueChanges.pipe(
       debounceTime(200),
       startWith(''),
@@ -38,7 +39,7 @@ export class MovieCatalogComponent implements OnInit {
       }))
   }
 
-  openDialogMovieInfo(id: string) {
+  openDialogMovieInfo(id: string): void {
     this.dataMovieService.getMovie(id).pipe(
       takeUntilDestroyed(this.destroy),
     ).subscribe(value => {

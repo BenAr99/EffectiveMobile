@@ -6,7 +6,4 @@ import {Subject} from 'rxjs';
 })
 export class NotifyService {
   error = new Subject<string>()
-
-  constructor() {
-  }
 }

@@ -1,0 +1,5 @@
+@if (movie) {
+  <img class="movie-card__image" alt="Изображение фильма" ngSrc="{{this.movie.url}}" width="250" height="375">
+  <h3 class="movie-card__name">{{ this.movie.name }}</h3>
+  <time>{{ this.movie.year }}</time>
+}

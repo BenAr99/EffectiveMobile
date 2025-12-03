@@ -3,24 +3,21 @@
     <mat-icon class="dialog__close-icon">close</mat-icon>
   </button>
 
-  <div class="dialog__image-container">
-    <img class="dialog__image" alt="Изображение фильма" src="{{data.url}}">
-  </div>
-  <div class="dialog__content">
+  <img class="dialog__image" alt="Изображение фильма" ngSrc="{{data.url}}" width="200" height="300">
+
+  <section class="dialog__content">
     <h2 class="dialog__title">{{ data.name }}</h2>
-    <span class="dialog__year">{{ data.year }}</span>
-    <div class="dialog__tags-container">
+    <time class="dialog__year">{{ data.year }}</time>
+    <ul class="dialog__tags-container">
       @for (tags of data.tags; track tags) {
-        <div class="dialog__tag">
-          <span> {{ tags }} </span>
-        </div>
+          <li class="dialog__tag"> {{ tags }} </li>
       }
-    </div>
+    </ul>
     <span class="dialog__description">{{ data.description }}</span>
 
     <div [appRatingColor]="data.rating" class="dialog__rating">
       <span> {{ data.rating }} </span>
     </div>
 
-  </div>
+  </section>
 }

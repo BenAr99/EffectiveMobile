@@ -1,4 +1,4 @@
-@use '../styles/media-query' as media;
+@use '../../../shared/styles/media-query' as media;
 
 :host {
   display: flex;
@@ -47,10 +47,12 @@
 }
 
 .dialog__tags-container {
+  margin: 0 0 5px;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 5px;
+  list-style-type: none;
 }
 
 .dialog__tag {
