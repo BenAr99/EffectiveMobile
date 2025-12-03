@@ -7,7 +7,7 @@
 
   <section class="dialog__content">
     <h2 class="dialog__title">{{ data.name }}</h2>
-    <time class="dialog__year">{{ data.year }}</time>
+    <span class="dialog__year">{{ data.year }}</span>
     <ul class="dialog__tags-container">
       @for (tags of data.tags; track tags) {
           <li class="dialog__tag"> {{ tags }} </li>
