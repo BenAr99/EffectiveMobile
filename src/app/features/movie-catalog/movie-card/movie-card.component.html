@@ -1,6 +1,6 @@
 @if (movie) {
-  <article>
-    <img class="movie-card__image" alt="Изображение фильма" ngSrc="{{this.movie.url}}" width="250" height="375">
+  <article class="movie-card">
+    <img class="movie-card__image" priority alt="Изображение фильма" ngSrc="{{this.movie.url}}" width="250" height="375">
     <h3 class="movie-card__name">{{ this.movie.name }}</h3>
     <span>{{ this.movie.year }}</span>
   </article>

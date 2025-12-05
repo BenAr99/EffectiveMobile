@@ -1,6 +1,4 @@
-@use '../../../shared/styles/media-query' as media;
-
-:host {
+.movie-card {
   display: flex;
   background: #fafcff;
   width: 100%;

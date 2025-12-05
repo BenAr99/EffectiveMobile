@@ -25,7 +25,6 @@ import {Movie} from './movie-catalog.contracts';
 export class MovieCatalogComponent implements OnInit {
   movies: Observable<Movie[]> = of([])
   search = new FormControl<string>('', [Validators.required])
-
   constructor(private dataMovieService: MovieCatalogService, private dialog: MatDialog, private destroy: DestroyRef) {
   }
 
