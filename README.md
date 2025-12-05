@@ -1,6 +1,7 @@
 Для запуска: 
 1) json-server --watch db.json --port 3000
 2) npx serve ./dist/effective-mobile/browser -l 4200 -s  (Оптимизированная сборка)  
+
 Сценарий ошибок: 
 1) При открытии диалогового окна фильма "Начало"
 2) При отсутствии запущенного json-server
